@@ -6,14 +6,13 @@ const { readJSON} = fs
 
 const createTables = async () => {
   try {
-    // Reading sql file content
-    const filePath = path.join(process.cwd(), "src/utils/db/tables.sql");
-    const fileContentAsString = () => readJSON(filePath)
-    // executing the query in postgres
-    pool.query(fileContentAsString);
+    const tablesFilePath = path.join(process.cwd(), "src/utils/db/tables.sql");
+    const contentAsBuffer = await fs.readFile(tablesFilePath);
+    const tablesQuery = contentAsBuffer.toString();
+    await pool.query(tablesQuery)
     console.log("✅ Default tables are created");
   } catch (error) {
-    console.log("❌ Error! tables are not created", error);
+    console.log( error);
   }
 };
 

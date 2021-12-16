@@ -19,7 +19,7 @@
     "start": "node src/server.js",
     "dev": "nodemon -r dotenv/config src/server.js",
     "prestart": "npm run create-tables",
-    "create-tables": "node -r dotenv/config ./src/utils/db/create-tables.js"
+    "create-tables": "node -r dotenv/config src/utils/db/create-tables.js"
   },
   "repository": {
     "type": "git",
